@@ -11,10 +11,13 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.util.Set;
 
-@Entity
+@Entity(name = "employees")
 @Getter
 @Setter
 @NoArgsConstructor
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "employment", discriminatorType = DiscriminatorType.INTEGER)
+@DiscriminatorValue("0")
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
